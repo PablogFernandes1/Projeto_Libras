@@ -12,10 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($usuario && password_verify($senha, $usuario['senha'])) {
-        echo "Login realizado com sucesso!";
-        // Aqui você pode iniciar a sessão e redirecionar o usuário para outra página
+        echo "<script>
+                alert('Login realizado com sucesso!');
+                window.location.href = 'index.html';
+              </script>";
     } else {
-        echo "Email ou senha incorretos!";
+        echo "<script>
+                alert('Email ou senha incorretos!');
+              </script>";
     }
 }
 ?>
@@ -25,7 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -34,20 +39,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="container">
         <div class="login-form">
             <h2 id="text-login">Login</h2>
-            <form method="post" id="login-text">
+            <form id="login-text" action="login.php" method="post">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
                 <br>
-                <label for="senha">Senha:</label>
-                <input type="password" id="senha" name="senha" required>
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="senha" required>
                 <br>
                 <button type="submit" id="button-login">Entrar</button>
             </form>
             <p>
                 É sua primeira vez no nosso site? 
-                <a href="cadastro.html">Faça seu cadastro!</a>
+                <a href="cadastro.php">Faça seu cadastro!</a>
             </p>
         </div>
     </div>
 </body>
 </html>
+
