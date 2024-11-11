@@ -72,60 +72,90 @@ $usuario_id = $_SESSION['usuario_id'];
     <form id="quizForm" class="p-3">
         <!-- Questão 1 -->
         <section class="question active" id="question1">
-            <p>1. Qual é o sinal para o número "1" em Libras?</p>
+            <p>1. Como é feito o sinal para o número "1" em Libras?</p>
             <div class="form-check">
-                <label class="form-check-label"><input type="radio" name="question1" value="a" class="form-check-input"> Mão com um dedo levantado.</label>
+                <label class="form-check-label"><input type="radio" name="question1" value="a" class="form-check-input"> Dedo indicador estendido, os outros dedos fechados</label>
             </div>
             <div class="form-check">
-                <label class="form-check-label"><input type="radio" name="question1" value="b" class="form-check-input"> Mão com todos os dedos levantados.</label>
+                <label class="form-check-label"><input type="radio" name="question1" value="b" class="form-check-input"> Mão aberta, com todos os dedos esticados</label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label"><input type="radio" name="question1" value="c" class="form-check-input"> Mão em forma de punho, com o polegar para cima</label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label"><input type="radio" name="question1" value="d" class="form-check-input"> Dedos polegar e indicador formando um "V"</label>
             </div>
             <button type="button" class="btn btn-primary mt-3" onclick="nextQuestion(1)">Próximo</button>
         </section>
 
         <!-- Questão 2 -->
         <section class="question" id="question2">
-            <p>2. Qual é o sinal para o número "2" em Libras?</p>
+            <p>2. Qual é o sinal para o número "5" em Libras?</p>
             <div class="form-check">
-                <label class="form-check-label"><input type="radio" name="question2" value="a" class="form-check-input"> Dois dedos levantados.</label>
+                <label class="form-check-label"><input type="radio" name="question2" value="a" class="form-check-input"> Mão aberta, com os dedos esticados</label>
             </div>
             <div class="form-check">
-                <label class="form-check-label"><input type="radio" name="question2" value="b" class="form-check-input"> Apenas o dedo indicador levantado.</label>
+                <label class="form-check-label"><input type="radio" name="question2" value="b" class="form-check-input"> Mão em forma de punho, com os dedos dobrados</label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label"><input type="radio" name="question2" value="c" class="form-check-input"> Cinco dedos curvados para dentro</label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label"><input type="radio" name="question2" value="d" class="form-check-input"> Mão com o polegar e o indicador formando um "V"</label>
             </div>
             <button type="button" class="btn btn-primary mt-3" onclick="nextQuestion(2)">Próximo</button>
         </section>
 
         <!-- Questão 3 -->
         <section class="question" id="question3">
-            <p>3. Qual é o sinal para o número "3" em Libras?</p>
+            <p>3. Como é feito o número "9" em Libras?</p>
             <div class="form-check">
-                <label class="form-check-label"><input type="radio" name="question3" value="a" class="form-check-input"> Mão com três dedos levantados.</label>
+                <label class="form-check-label"><input type="radio" name="question3" value="a" class="form-check-input"> Dedo mínimo estendido, os outros dedos fechados</label>
             </div>
             <div class="form-check">
-                <label class="form-check-label"><input type="radio" name="question3" value="b" class="form-check-input"> Mão com todos os dedos juntos.</label>
+                <label class="form-check-label"><input type="radio" name="question3" value="b" class="form-check-input"> Mão em forma de punho com o dedo indicador apontando para cima</label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label"><input type="radio" name="question3" value="c" class="form-check-input"> Mão aberta com os cinco dedos estendidos</label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label"><input type="radio" name="question3" value="d" class="form-check-input"> Dedo polegar e indicador formando um "L"</label>
             </div>
             <button type="button" class="btn btn-primary mt-3" onclick="nextQuestion(3)">Próximo</button>
         </section>
 
         <!-- Questão 4 -->
         <section class="question" id="question4">
-            <p>4. Qual é o sinal para o número "4" em Libras?</p>
+            <p>4. Para representar o número "3" em Libras, qual a posição correta da mão?</p>
             <div class="form-check">
-                <label class="form-check-label"><input type="radio" name="question4" value="a" class="form-check-input"> Quatro dedos levantados.</label>
+                <label class="form-check-label"><input type="radio" name="question4" value="a" class="form-check-input"> Dedos polegar, indicador e médio estendidos, formando um "3"</label>
             </div>
             <div class="form-check">
-                <label class="form-check-label"><input type="radio" name="question4" value="b" class="form-check-input"> Apenas o polegar levantado.</label>
+                <label class="form-check-label"><input type="radio" name="question4" value="b" class="form-check-input"> Dedos polegar e indicador formando um "V", com os outros dedos dobrados</label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label"><input type="radio" name="question4" value="c" class="form-check-input"> Mão aberta com todos os dedos esticados</label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label"><input type="radio" name="question4" value="d" class="form-check-input"> Mão em punho com o dedo mínimo estendido</label>
             </div>
             <button type="button" class="btn btn-primary mt-3" onclick="nextQuestion(4)">Próximo</button>
         </section>
 
         <!-- Questão 5 -->
         <section class="question" id="question5">
-            <p>5. Qual é o sinal para o número "5" em Libras?</p>
+            <p>5. Como é feita a sinalização do número "7" em Libras?</p>
             <div class="form-check">
-                <label class="form-check-label"><input type="radio" name="question5" value="a" class="form-check-input"> Mão aberta com cinco dedos levantados.</label>
+                <label class="form-check-label"><input type="radio" name="question5" value="a" class="form-check-input"> Mão aberta, com sete dedos esticados</label>
             </div>
             <div class="form-check">
-                <label class="form-check-label"><input type="radio" name="question5" value="b" class="form-check-input"> Apenas o polegar levantado.</label>
+                <label class="form-check-label"><input type="radio" name="question5" value="b" class="form-check-input"> Mão com o dedo mínimo e o anelar estendidos, os outros dedos fechados</label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label"><input type="radio" name="question5" value="c" class="form-check-input"> Mão aberta com os cinco dedos esticados e o polegar também estendido</label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label"><input type="radio" name="question5" value="d" class="form-check-input"> Mão em forma de punho, com o dedo indicador e o mínimo esticados</label>
             </div>
             <button type="button" class="btn btn-success mt-3" onclick="submitQuiz()">Enviar Respostas</button>
         </section>
@@ -136,9 +166,9 @@ $usuario_id = $_SESSION['usuario_id'];
     const correctAnswers = {
         question1: "a",
         question2: "a",
-        question3: "a",
+        question3: "b",
         question4: "a",
-        question5: "a"
+        question5: "b"
     };
 
     let score = 0;

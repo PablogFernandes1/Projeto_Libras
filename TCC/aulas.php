@@ -99,17 +99,24 @@ $classe_circulo_numeros = verificaAulaCompletada($pdo, $usuario_id, 'numeros');
             width: 70%;
             height: calc(100% - 60px); /* Altura total menos o menu */
             display: flex;
-            justify-content: space-around;
+            flex-direction: column;
             align-items: center;
             padding: 20px;
             box-sizing: border-box;
             margin-top: 60px;
         }
 
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FF7100;
+            margin-bottom: 20px;
+        }
+
         .circle-container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: space-around;
+            width: 100%;
             gap: 20px;
         }
 
@@ -158,31 +165,9 @@ $classe_circulo_numeros = verificaAulaCompletada($pdo, $usuario_id, 'numeros');
 
         <!-- Conteúdo principal das aulas -->
         <div class="inner-container">
+            <div class="title">Aulas Interativas</div>
             <!-- Coluna esquerda -->
             <div class="circle-container">
-                <!-- Círculo de Emoções -->
-                <div class="circle-wrapper">
-                    <div class="circle"></div>
-                    <div class="circle-label">Emoções</div>
-                </div>
-
-                <!-- Círculo de Números com link e classe dinâmica -->
-                <div class="circle-wrapper">
-                    <a href="numeros.html" class="circle-link">
-                        <div class="<?= $classe_circulo_numeros ?>"></div>
-                    </a>
-                    <div class="circle-label">Números</div>
-                </div>
-
-                <div class="circle-wrapper">
-                    <div class="circle"></div>
-                    <div class="circle-label">Cores</div>
-                </div>
-            </div>
-
-            <!-- Coluna direita -->
-            <div class="circle-container">
-                <!-- Círculo de Alfabeto com link e classe dinâmica -->
                 <div class="circle-wrapper">
                     <a href="Alfabeto.html" class="circle-link">
                         <div class="<?= $classe_circulo_alfabeto ?>"></div>
@@ -192,12 +177,25 @@ $classe_circulo_numeros = verificaAulaCompletada($pdo, $usuario_id, 'numeros');
 
                 <div class="circle-wrapper">
                     <div class="circle"></div>
-                    <div class="circle-label">Cômodos</div>
+                    <div class="circle-label">Expressões</div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <!-- Coluna direita -->
+            <div class="circle-container">
+                <div class="circle-wrapper">
+                    <a href="numeros.html" class="circle-link">
+                        <div class="<?= $classe_circulo_numeros ?>"></div>
+                    </a>
+                    <div class="circle-label">Números</div>
                 </div>
                 
                 <div class="circle-wrapper">
                     <div class="circle"></div>
-                    <div class="circle-label">Reflexões</div>
+                    <div class="circle-label">Comidas</div>
                 </div>
             </div>
         </div>
