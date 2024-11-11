@@ -14,15 +14,20 @@ if (!isset($_SESSION['nome_usuario'])) {
 // ID do usuário logado
 $usuario_id = $_SESSION['usuario_id'];
 
-// Consulta para verificar se o usuário completou o quiz do Alfabeto
-$sql = "SELECT * FROM resposta_alfabeto WHERE usuario_id = :usuario_id";
-$stmt = $pdo->prepare($sql);
-$stmt->bindParam(':usuario_id', $usuario_id);
-$stmt->execute();
-$resposta_alfabeto = $stmt->fetch(PDO::FETCH_ASSOC);
+// Função para verificar se uma aula foi completada
+function verificaAulaCompletada($pdo, $usuario_id, $aula_nome) {
+    $sql = "SELECT * FROM resposta_alfabeto WHERE usuario_id = :usuario_id AND aula = :aula";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':usuario_id', $usuario_id);
+    $stmt->bindParam(':aula', $aula_nome);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC) ? 'circle-completed' : 'circle';
+}
 
-// Define a classe da cor do círculo com base na resposta
-$classe_circulo_alfabeto = $resposta_alfabeto ? 'circle-completed' : 'circle';
+// Define a classe da cor do círculo com base na resposta para cada aula
+$classe_circulo_alfabeto = verificaAulaCompletada($pdo, $usuario_id, 'alfabeto');
+$classe_circulo_numeros = verificaAulaCompletada($pdo, $usuario_id, 'numeros');
+
 ?>
 
 <!DOCTYPE html>
@@ -32,8 +37,9 @@ $classe_circulo_alfabeto = $resposta_alfabeto ? 'circle-completed' : 'circle';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aulas</title>
     <link rel="stylesheet" href="style.css">
+
     <style>
-        /* Estilo da página */
+        /* Estilos para a estrutura e layout */
         * {
             margin: 0;
             padding: 0;
@@ -42,8 +48,7 @@ $classe_circulo_alfabeto = $resposta_alfabeto ? 'circle-completed' : 'circle';
 
         body, html {
             height: 100%;
-            overflow: hidden;
-            font-family: 'Poppins', sans-serif;
+            font-family: Arial, sans-serif;
         }
 
         .outer-container {
@@ -67,7 +72,6 @@ $classe_circulo_alfabeto = $resposta_alfabeto ? 'circle-completed' : 'circle';
             position: absolute;
             top: 0;
             left: 0;
-            box-sizing: border-box;
         }
 
         .menu a {
@@ -155,40 +159,47 @@ $classe_circulo_alfabeto = $resposta_alfabeto ? 'circle-completed' : 'circle';
         <!-- Conteúdo principal das aulas -->
         <div class="inner-container">
             <!-- Coluna esquerda -->
-    <div class="circle-container">
-        <div class="circle-wrapper">
-            <a href="Alfabeto.html" class="circle-link">
-                <div class="<?= $classe_circulo_alfabeto ?>"></div>
-            </a>
-            <div class="circle-label">Alfabeto</div>
-        </div>
-        <div class="circle-wrapper">
-            <div class="circle"></div>
-            <div class="circle-label">Emoções</div>
-        </div>
-        <div class="circle-wrapper">
-            <div class="circle"></div>
-            <div class="circle-label">Cores</div>
-        </div>
-    </div>
+            <div class="circle-container">
+                <!-- Círculo de Emoções -->
+                <div class="circle-wrapper">
+                    <div class="circle"></div>
+                    <div class="circle-label">Emoções</div>
+                </div>
 
-    <!-- Coluna direita -->
-    <div class="circle-container">
-        <div class="circle-wrapper">
-            <div class="circle"></div>
-            <div class="circle-label">Números</div>
-        </div>
-        <div class="circle-wrapper">
-            <div class="circle"></div>
-            <div class="circle-label">Cômodos</div>
-        </div>
-        <div class="circle-wrapper">
-            <div class="circle"></div>
-            <div class="circle-label">Reflexões</div>
-        </div>
-    </div>
-</div>
+                <!-- Círculo de Números com link e classe dinâmica -->
+                <div class="circle-wrapper">
+                    <a href="numeros.html" class="circle-link">
+                        <div class="<?= $classe_circulo_numeros ?>"></div>
+                    </a>
+                    <div class="circle-label">Números</div>
+                </div>
 
+                <div class="circle-wrapper">
+                    <div class="circle"></div>
+                    <div class="circle-label">Cores</div>
+                </div>
+            </div>
+
+            <!-- Coluna direita -->
+            <div class="circle-container">
+                <!-- Círculo de Alfabeto com link e classe dinâmica -->
+                <div class="circle-wrapper">
+                    <a href="Alfabeto.html" class="circle-link">
+                        <div class="<?= $classe_circulo_alfabeto ?>"></div>
+                    </a>
+                    <div class="circle-label">Alfabeto</div>
+                </div>
+
+                <div class="circle-wrapper">
+                    <div class="circle"></div>
+                    <div class="circle-label">Cômodos</div>
+                </div>
+                
+                <div class="circle-wrapper">
+                    <div class="circle"></div>
+                    <div class="circle-label">Reflexões</div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

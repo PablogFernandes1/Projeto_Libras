@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números em Libras</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FF7100;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #FF7100;
+            padding: 10px 20px;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        .menu img {
+            width: 60px;
+            height: auto;
+            margin-left: auto;
+        }
+
+        .menu a:hover {
+            color: #FFDF91;
+        }
+
+        .content-wrapper {
+            background-color: #fff;
+            width: 80%;
+            max-width: 800px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: justify;
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: #FF7100;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #FF7100;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .number-card {
+            width: 80px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #FF7100;
+            border-radius: 10px;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .number-card:hover {
+            transform: scale(1.1);
+        }
+
+        .number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FF7100;
+            margin-bottom: 10px;
+        }
+
+        .sign-image {
+            width: 50px;
+            height: 50px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .modal-content img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .close-btn {
+            background-color: #FF7100;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .close-btn:hover {
+            background-color: #FF820E;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .test-button {
+            background-color: #FF7100;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .test-button:hover {
+            background-color: #FF820E;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="menu">
+        <img src="img/logo.png" alt="Logo do site">
+        <a href="index.html">Página inicial</a>
+        <a href="aulas.html">Aulas</a>
+        <a href="dicionario.html">Dicionário</a>
+    </div>
+
+    <div class="content-wrapper">
+        <h1>Números em Libras</h1>
+
+        <div class="intro-text">
+            <p>Aprender os números em Libras é essencial para a comunicação básica, incluindo a contagem, indicar idades,
+                quantidades e outras informações numéricas importantes. Explore os sinais abaixo para cada número e
+                pratique imitando os gestos para melhorar sua fluência em Libras.</p>
+        </div>
+
+        <h2>Números em Libras - De 0 a 9</h2>
+
+        <div class="container">
+            <div class="number-card" onclick="openModal(0)">
+                <div class="number">0</div>
+                <img src="numeros/0.jpg" alt="Sinal para 0 em Libras" class="sign-image">
+            </div>
+            <div class="number-card" onclick="openModal(1)">
+                <div class="number">1</div>
+                <img src="numeros/1.jpg" alt="Sinal para 1 em Libras" class="sign-image">
+            </div>
+            <div class="number-card" onclick="openModal(2)">
+                <div class="number">2</div>
+                <img src="numeros/2.jpg" alt="Sinal para 2 em Libras" class="sign-image">
+            </div>
+            <div class="number-card" onclick="openModal(3)">
+                <div class="number">3</div>
+                <img src="numeros/3.jpg" alt="Sinal para 3 em Libras" class="sign-image">
+            </div>
+            <div class="number-card" onclick="openModal(4)">
+                <div class="number">4</div>
+                <img src="numeros/4.jpg" alt="Sinal para 4 em Libras" class="sign-image">
+            </div>
+            <div class="number-card" onclick="openModal(5)">
+                <div class="number">5</div>
+                <img src="numeros/5.jpg" alt="Sinal para 5 em Libras" class="sign-image">
+            </div>
+            <div class="number-card" onclick="openModal(6)">
+                <div class="number">6</div>
+                <img src="numeros/6.jpg" alt="Sinal para 6 em Libras" class="sign-image">
+            </div>
+            <div class="number-card" onclick="openModal(7)">
+                <div class="number">7</div>
+                <img src="numeros/7.jpg" alt="Sinal para 7 em Libras" class="sign-image">
+            </div>
+            <div class="number-card" onclick="openModal(8)">
+                <div class="number">8</div>
+                <img src="numeros/8.jpg" alt="Sinal para 8 em Libras" class="sign-image">
+            </div>
+            <div class="number-card" onclick="openModal(9)">
+                <div class="number">9</div>
+                <img src="numeros/9.jpg" alt="Sinal para 9 em Libras" class="sign-image">
+            </div>  
+        </div>
+        
+        <div class="button-container">
+            <a href="teste_nv2.php" class="test-button">Ir para o teste</a>
+        </div>
+        </div>
+        
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <img src="" alt="Sinal do número em Libras" id="modalImage">
+                <h2 id="modalNumber"></h2>
+                <p>Este é o sinal do número em Libras. Tente praticar o movimento!</p>
+                <button class="close-btn" onclick="closeModal()">Fechar</button>
+            </div>
+        </div>
+        
+        <script>
+            function openModal(number) {
+                document.getElementById('modal').style.display = 'flex';
+                document.getElementById('modalNumber').textContent = number;
+                document.getElementById('modalImage').src = `numeros/${number}.jpg`;
+            }
+        
+            function closeModal() {
+                document.getElementById('modal').style.display = 'none';
+            }
+        </script>
+        
+
+</body>
+
+</html>
