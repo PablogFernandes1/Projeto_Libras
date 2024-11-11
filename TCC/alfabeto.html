@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfabeto em Libras</title>
+    <style>
+        /* Estilos básicos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FF7100;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Estilização do menu para alinhar a logo à direita */
+        .menu {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #FF7100;
+            /* Ajuste a cor de fundo se necessário */
+            padding: 10px 20px;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        .menu img {
+            width: 60px;
+            height: auto;
+            margin-left: auto;
+            /* Empurra a logo para o canto direito */
+        }
+
+        .menu a:hover {
+            color: #FFDF91;
+        }
+
+        .content-wrapper {
+            background-color: #fff;
+            width: 80%;
+            max-width: 800px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: justify;
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: #FF7100;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #FF7100;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .letter-card {
+            width: 80px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #FF7100;
+            border-radius: 10px;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .letter-card:hover {
+            transform: scale(1.1);
+        }
+
+        .letter {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FF7100;
+            margin-bottom: 10px;
+        }
+
+        .sign-image {
+            width: 50px;
+            height: 50px;
+        }
+
+        /* Modal para mostrar a letra selecionada em destaque */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .modal-content img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .close-btn {
+            background-color: #FF7100;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .close-btn:hover {
+            background-color: #FF820E;
+        }
+
+        /* Container para centralizar o botão */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Estilo do botão */
+        .test-button {
+            background-color: #FF7100;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Efeito de hover no botão */
+        .test-button:hover {
+            background-color: #FF820E;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Menu com a logo -->
+    <div class="menu">
+        <img src="img/logo.png" alt="Logo do site">
+        <a href="index.html">Página inicial</a>
+        <a href="aulas.html">Aulas</a>
+        <a href="dicionario.html">Dicionário</a>
+    </div>
+
+    <div class="content-wrapper">
+        <!-- Título principal -->
+        <h1>Alfabeto em Libras</h1>
+
+        <!-- Texto de introdução sobre o alfabeto em Libras -->
+        <div class="intro-text">
+            <p>O alfabeto em Libras é uma ferramenta essencial para a comunicação básica em Língua Brasileira de Sinais,
+                especialmente útil para soletrar palavras, nomes próprios, ou conceitos que ainda não possuem um sinal
+                específico em Libras. É composto por sinais para cada letra do alfabeto, permitindo que você comunique
+                palavras letra por letra. Aprender o alfabeto é um ótimo ponto de partida para quem está começando a
+                aprender Libras, pois ele amplia as possibilidades de comunicação, mesmo que de maneira limitada.</p>
+            <p>Explore as letras abaixo, veja como cada uma é sinalizada e tente praticar imitando os gestos. Com o
+                tempo e prática, você será capaz de se comunicar de forma mais eficiente e clara em Libras.</p>
+        </div>
+
+        <h2>Alfabeto em Libras - Sinais de A a Z</h2>
+
+
+        <!-- Container com os cards do alfabeto de A a Z -->
+        <div class="container">
+            <!-- Cards de A até Z -->
+            <div class="letter-card" onclick="openModal('A')">
+                <div class="letter">A</div>
+                <img src="alfabeto/A.jpg" alt="Sinal para A em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('B')">
+                <div class="letter">B</div>
+                <img src="alfabeto/B.jpg" alt="Sinal para B em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('C')">
+                <div class="letter">C</div>
+                <img src="alfabeto/C.jpg" alt="Sinal para C em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('D')">
+                <div class="letter">D</div>
+                <img src="alfabeto/D.jpg" alt="Sinal para D em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('E')">
+                <div class="letter">E</div>
+                <img src="alfabeto/E.jpg" alt="Sinal para E em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('F')">
+                <div class="letter">F</div>
+                <img src="alfabeto/F.jpg" alt="Sinal para F em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('G')">
+                <div class="letter">G</div>
+                <img src="alfabeto/G.jpg" alt="Sinal para G em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('H')">
+                <div class="letter">H</div>
+                <img src="alfabeto/H.jpg" alt="Sinal para H em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('I')">
+                <div class="letter">I</div>
+                <img src="alfabeto/I.jpg" alt="Sinal para I em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('J')">
+                <div class="letter">J</div>
+                <img src="alfabeto/J.jpg" alt="Sinal para J em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('K')">
+                <div class="letter">K</div>
+                <img src="alfabeto/K.jpg" alt="Sinal para K em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('L')">
+                <div class="letter">L</div>
+                <img src="alfabeto/L.jpg" alt="Sinal para L em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('M')">
+                <div class="letter">M</div>
+                <img src="alfabeto/M.jpg" alt="Sinal para M em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('N')">
+                <div class="letter">N</div>
+                <img src="alfabeto/N.jpg" alt="Sinal para N em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('O')">
+                <div class="letter">O</div>
+                <img src="alfabeto/O.jpg" alt="Sinal para O em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('P')">
+                <div class="letter">P</div>
+                <img src="alfabeto/P.jpg" alt="Sinal para P em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('Q')">
+                <div class="letter">Q</div>
+                <img src="alfabeto/Q.jpg" alt="Sinal para Q em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('R')">
+                <div class="letter">R</div>
+                <img src="alfabeto/R.jpg" alt="Sinal para R em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('S')">
+                <div class="letter">S</div>
+                <img src="alfabeto/S.jpg" alt="Sinal para S em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('T')">
+                <div class="letter">T</div>
+                <img src="alfabeto/T.jpg" alt="Sinal para T em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('U')">
+                <div class="letter">U</div>
+                <img src="alfabeto/U.jpg" alt="Sinal para U em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('V')">
+                <div class="letter">V</div>
+                <img src="alfabeto/V.jpg" alt="Sinal para V em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('W')">
+                <div class="letter">W</div>
+                <img src="alfabeto/W.jpg" alt="Sinal para W em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('X')">
+                <div class="letter">X</div>
+                <img src="alfabeto/X.jpg" alt="Sinal para X em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('Y')">
+                <div class="letter">Y</div>
+                <img src="alfabeto/Y.jpg" alt="Sinal para Y em Libras" class="sign-image">
+            </div>
+            <div class="letter-card" onclick="openModal('Z')">
+                <div class="letter">Z</div>
+                <img src="alfabeto/Z.jpg" alt="Sinal para Z em Libras" class="sign-image">
+            </div>
+        </div>
+
+        <div class="button-container">
+            <a href="teste_nv1.html" class="test-button">Ir para o teste</a>
+        </div>
+
+
+    </div>
+
+    <!-- Modal para exibir a letra em destaque -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <img src="" alt="Sinal da letra em Libras" id="modalImage">
+            <h2 id="modalLetter"></h2>
+            <p>Este é o sinal da letra em Libras. Tente praticar o movimento!</p>
+            <button class="close-btn" onclick="closeModal()">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal(letter) {
+            document.getElementById('modal').style.display = 'flex';
+            document.getElementById('modalLetter').textContent = letter;
+            document.getElementById('modalImage').src = `alfabeto/${letter}.jpg`;
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+    </script>
+
+
+
+</body>
+
+</html>

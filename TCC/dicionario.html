@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dicionário</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilo da página */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .outer-container {
+            background-color: #FF7100;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            flex-direction: column;
+        }
+
+        .menu {
+            background-color: #FF7100;
+            width: 100%;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+        }
+
+        .menu a:hover {
+            background-color: #FF820E;
+            border-radius: 5px;
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+        }
+
+        .content-container {
+            background-color: #fff;
+            width: 80%;
+            height: calc(100% - 60px); /* Altura total menos o menu */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .title {
+            font-size: 36px;
+            color: #FF7100;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .entry {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px; /* Aumenta o espaçamento entre os itens */
+            width: 100%;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            min-width: 100px;
+            background-color: #FFA733;
+            border-radius: 50%;
+            margin-right: 30px; /* Aumenta o espaçamento entre o círculo e o texto */
+            border: 3px solid transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle.active {
+            border-color: #4CAF50;
+        }
+
+        .text-content {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .pagination {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+        }
+
+        .pagination .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #FF7100;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        .pagination .dot.active {
+            background-color: #FF820E;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer-container">
+        <!-- Menu de navegação com a logo no topo -->
+        <div class="menu">
+            <a href="index.html">Página inicial</a>
+            <a href="aulas.html">Aulas</a>
+            <a href="dicionario.html">Dicionário</a>
+            <img src="img/logo.png" alt="Logo" class="logo">
+        </div>
+
+        <!-- Conteúdo principal do dicionário -->
+        <div class="content-container">
+            <div class="title">DICIONÁRIO</div>
+
+            <div class="entry">
+                <div class="circle"></div>
+                <div class="text-content">
+                    <p>Descrição do termo ou sinal em Libras. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam enim vitae est mollis elementum. Donec consectetur placerat leo a tincidunt.</p>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="circle"></div>
+                <div class="text-content">
+                    <p>Descrição do termo ou sinal em Libras. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam enim vitae est mollis elementum. Donec consectetur placerat leo a tincidunt.</p>
+                </div>
+            </div>
+
+            <div class="entry">
+                <div class="circle active"></div>
+                <div class="text-content">
+                    <p>Descrição do termo ou sinal em Libras. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquam enim vitae est mollis elementum. Donec consectetur placerat leo a tincidunt.</p>
+                </div>
+            </div>
+
+            <!-- Paginação no canto inferior direito -->
+            <div class="pagination">
+                <div class="dot"></div>
+                <div class="dot active"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
