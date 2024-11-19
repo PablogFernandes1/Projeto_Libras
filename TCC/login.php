@@ -49,10 +49,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h2 id="text-login">Login</h2>
             <form id="login-text" action="login.php" method="post">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" placeholder="digite seu email"required>
                 <br>
                 <label for="password">Senha:</label>
-                <input type="password" id="password" name="senha" required>
+                <input type="password" id="password" name="senha" placeholder="digite sua senha" required>
                 <br>
                 <button type="submit" id="button-login">Entrar</button>
             </form>

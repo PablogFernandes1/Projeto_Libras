@@ -63,13 +63,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h2 id="text-register">Cadastro</h2>
             <form action="cadastro.php" method="POST" id="register-text">
                 <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
                 <br>
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" placeholder="Digite seu email" required>
                 <br>
                 <label for="password">Senha:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" placeholder="Digite sua senha " required>
                 <br>
                 <button type="submit" id="button-register">Cadastrar</button>
             </form>
