@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expressões em Libras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FF7100;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #FF7100;
+            padding: 10px 20px;
+            width: 100%;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        .menu img {
+            width: 50px;
+        }
+
+        .content-wrapper {
+            background-color: #fff;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 900px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #FF7100;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #FF7100;
+            margin: 20px 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .item-card {
+            width: 120px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #FF7100;
+            border-radius: 10px;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            background-color: #FFA733;
+            color: #fff;
+        }
+
+        .item-card:hover {
+            transform: scale(1.1);
+            background-color: #FF820E;
+        }
+
+        .item-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .item-image {
+            width: 50px;
+            height: 50px;
+        }
+
+        /* Modal para exibir o item em destaque */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .modal-content img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .close-btn {
+            background-color: #FF7100;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .close-btn:hover {
+            background-color: #FF820E;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .test-button {
+            background-color: #FF7100;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .test-button:hover {
+            background-color: #FF820E;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Menu -->
+    <div class="menu">
+        <a href="index.html">Página Inicial</a>
+        <a href="aulas.html">Aulas</a>
+        <a href="dicionario.html">Dicionário</a>
+        <img src="img/logo.png" alt="Logo">
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="content-wrapper">
+        <h1>Expressões em Libras</h1>
+
+        <!-- Texto de introdução -->
+        <div class="intro-text">
+            <p>
+                As expressões em Libras são essenciais para a comunicação cotidiana. Elas ajudam a transmitir emoções,
+                intenções e significados em diferentes contextos, promovendo uma comunicação mais fluida e eficaz entre
+                ouvintes e surdos.
+            </p>
+        </div>
+
+        <h2>Expressões em Libras</h2>
+
+        <!-- Container com os itens -->
+        <div class="container">
+            <div class="item-card" onclick="openModal('boasorte')">
+                <div class="item-name">Boa Sorte</div>
+                <img src="expressoes/boasorte.jpeg" alt="Sinal para Boa Sorte em Libras" class="item-image">
+            </div>
+            <div class="item-card" onclick="openModal('comlicenca')">
+                <div class="item-name">Com Licença</div>
+                <img src="expressoes/com_licenca.jpeg" alt="Sinal para Com Licença em Libras" class="item-image">
+            </div>
+            <div class="item-card" onclick="openModal('desculpe')">
+                <div class="item-name">Desculpe</div>
+                <img src="expressoes/desculpe.jpeg" alt="Sinal para Desculpe em Libras" class="item-image">
+            </div>
+            <div class="item-card" onclick="openModal('porfavor')">
+                <div class="item-name">Por Favor</div>
+                <img src="expressoes/porfavor.jpeg" alt="Sinal para Por Favor em Libras" class="item-image">
+            </div>
+            <div class="item-card" onclick="openModal('prazer')">
+                <div class="item-name">Prazer</div>
+                <img src="expressoes/prazer.jpeg" alt="Sinal para Prazer em Libras" class="item-image">
+            </div>
+            <div class="item-card" onclick="openModal('saudade')">
+                <div class="item-name">Saudade</div>
+                <img src="expressoes/saudade.jpeg" alt="Sinal para Saudade em Libras" class="item-image">
+            </div>
+            <div class="item-card" onclick="openModal('tchau')">
+                <div class="item-name">Tchau</div>
+                <img src="expressoes/tchau.jpeg" alt="Sinal para Tchau em Libras" class="item-image">
+            </div>
+        </div>
+        <div class="button-container">
+            <a href="teste_nv4.php" class="test-button">Ir para o teste</a>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <img src="" alt="Sinal da expressão em Libras" id="modalImage">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+            <button class="close-btn" onclick="closeModal()">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal(item) {
+            const modal = document.getElementById('modal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+
+            // Configurações das expressões
+            const items = {
+                boasorte: {
+                    image: "expressoes/boasorte.jpeg",
+                    title: "Boa Sorte",
+                    description: "Mãos cruzadas com movimento para frente, simbolizando um desejo de sorte."
+                },
+                comlicenca: {
+                    image: "expressoes/com_licenca.jpeg",
+                    title: "Com Licença",
+                    description: "Movimento da mão para frente com um gesto educado pedindo passagem."
+                },
+                desculpe: {
+                    image: "expressoes/desculpe.jpeg",
+                    title: "Desculpe",
+                    description: "Mão direita em punho movendo-se em círculos no peito."
+                },
+                porfavor: {
+                    image: "expressoes/porfavor.jpeg",
+                    title: "Por Favor",
+                    description: "Mãos juntas em gesto de pedido com leve inclinação da cabeça."
+                },
+                prazer: {
+                    image: "expressoes/prazer.jpeg",
+                    title: "Prazer",
+                    description: "Movimento das mãos abertas e inclinadas para frente simbolizando satisfação."
+                },
+                saudade: {
+                    image: "expressoes/saudade.jpeg",
+                    title: "Saudade",
+                    description: "Mão no peito com movimentos leves, expressando nostalgia."
+                },
+                tchau: {
+                    image: "expressoes/tchau.jpeg",
+                    title: "Tchau",
+                    description: "Mão acenando para a frente em gesto de despedida."
+                }
+            };
+
+            // Configurar modal com os dados do item
+            modalImage.src = items[item].image;
+            modalTitle.textContent = items[item].title;
+            modalDescription.textContent = items[item].description;
+
+            modal.style.display = "flex";
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>

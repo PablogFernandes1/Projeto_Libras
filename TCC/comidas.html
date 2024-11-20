@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comidas em Libras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FF7100;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #FF7100;
+            padding: 10px 20px;
+            width: 100%;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        .menu img {
+            width: 50px;
+        }
+
+        .content-wrapper {
+            background-color: #fff;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 900px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #FF7100;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #FF7100;
+            margin: 20px 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .item-card {
+            width: 120px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #FF7100;
+            border-radius: 10px;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            background-color: #FFA733;
+            color: #fff;
+        }
+
+        .item-card:hover {
+            transform: scale(1.1);
+            background-color: #FF820E;
+        }
+
+        .item-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .item-image {
+            width: 50px;
+            height: 50px;
+        }
+
+        /* Modal para exibir o item em destaque */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .modal-content img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .close-btn {
+            background-color: #FF7100;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .close-btn:hover {
+            background-color: #FF820E;
+        }
+
+        .button-container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .test-button {
+            background-color: #FF7100;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .test-button:hover {
+            background-color: #FF820E;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Menu -->
+    <div class="menu">
+        <a href="index.html">Página Inicial</a>
+        <a href="aulas.html">Aulas</a>
+        <a href="dicionario.html">Dicionário</a>
+        <img src="img/logo.png" alt="Logo">
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="content-wrapper">
+        <h1>Comidas em Libras</h1>
+
+        <!-- Texto de introdução -->
+        <div class="intro-text">
+            <p>
+                Aprender sobre comidas em Libras é essencial para promover inclusão e comunicação eficaz com a
+                comunidade surda. O vocabulário relacionado a alimentos não só facilita interações em situações
+                cotidianas, como em restaurantes, mercados e cozinhas, mas também fortalece o respeito pela diversidade
+                cultural. Esse aprendizado permite que pessoas ouvintes e surdas compartilhem experiências gastronômicas
+                e promovam uma sociedade mais acessível e acolhedora.
+            </p>
+        </div>
+
+        <h2>Comidas em Libras</h2>
+
+        <!-- Container com os itens -->
+        <div class="container">
+            <div class="item-card" onclick="openModal('arroz')">
+                <div class="item-name">Arroz</div>
+                <img src="comidas/arroz.png" alt="Sinal para arroz em Libras" class="item-image">
+            </div>
+            <div class="item-card" onclick="openModal('batatas')">
+                <div class="item-name">Batatas</div>
+                <img src="comidas/batats.png" alt="Sinal para batatas em Libras" class="item-image">
+            </div>
+            <div class="item-card" onclick="openModal('bolacha')">
+                <div class="item-name">Bolacha</div>
+                <img src="comidas/bolacha.png" alt="Sinal para bolacha em Libras" class="item-image">
+            </div>
+            <div class="item-card" onclick="openModal('cafe')">
+                <div class="item-name">Café</div>
+                <img src="comidas/cafe.png" alt="Sinal para café em Libras" class="item-image">
+            </div>
+            <div class="item-card" onclick="openModal('carne')">
+                <div class="item-name">Carne</div>
+                <img src="comidas/carne.png" alt="Sinal para carne em Libras" class="item-image">
+            </div>
+            <div class="item-card" onclick="openModal('chocolate')">
+                <div class="item-name">Chocolate</div>
+                <img src="comidas/chocolate.png" alt="Sinal para chocolate em Libras" class="item-image">
+            </div>
+            <div class="item-card" onclick="openModal('feijao')">
+                <div class="item-name">Feijão</div>
+                <img src="comidas/feijao.png" alt="Sinal para feijão em Libras" class="item-image">
+            </div>
+            <div class="item-card" onclick="openModal('leite')">
+                <div class="item-name">Leite</div>
+                <img src="comidas/leite.png" alt="Sinal para leite em Libras" class="item-image">
+            </div>
+            <div class="item-card" onclick="openModal('macarrao')">
+                <div class="item-name">Macarrão</div>
+                <img src="comidas/macarrao.png" alt="Sinal para macarrão em Libras" class="item-image">
+            </div>
+            <div class="item-card" onclick="openModal('manteiga')">
+                <div class="item-name">Manteiga</div>
+                <img src="comidas/manteiga.png" alt="Sinal para manteiga em Libras" class="item-image">
+            </div>
+            <div class="item-card" onclick="openModal('ovo')">
+                <div class="item-name">Ovo</div>
+                <img src="comidas/ovo.png" alt="Sinal para ovo em Libras" class="item-image">
+            </div>
+            <div class="item-card" onclick="openModal('queijo')">
+                <div class="item-name">Queijo</div>
+                <img src="comidas/queijo.png" alt="Sinal para queijo em Libras" class="item-image">
+            </div>
+            <div class="item-card" onclick="openModal('sopa')">
+                <div class="item-name">Sopa</div>
+                <img src="comidas/sopa.png" alt="Sinal para sopa em Libras" class="item-image">
+            </div>
+            <div class="item-card" onclick="openModal('sorvete')">
+                <div class="item-name">Sorvete</div>
+                <img src="comidas/sorvete.png" alt="Sinal para sorvete em Libras" class="item-image">
+            </div>
+        </div>
+
+        <div class="button-container">
+            <a href="teste_nv3.php" class="test-button">Ir para o Teste</a>
+        </div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <img src="" alt="Sinal do item em Libras" id="modalImage">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+            <button class="close-btn" onclick="closeModal()">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Botão para o teste -->
+
+
+    <script>
+        function openModal(item) {
+            const modal = document.getElementById('modal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+
+            const items = {
+                arroz: { image: "comidas/arroz.png", title: "Arroz", description: "O sinal para arroz representa os grãos do alimento." },
+                batatas: { image: "comidas/batatas.png", title: "Batatas", description: "O sinal para batatas simboliza seu preparo." },
+                bolacha: { image: "comidas/bolacha.png", title: "Bolacha", description: "O sinal para bolacha descreve o formato." },
+                cafe: { image: "comidas/cafe.png", title: "Café", description: "Café é sinalizado representando a bebida." },
+                carne: { image: "comidas/carne.png", title: "Carne", description: "O sinal para carne mostra seu preparo." },
+                chocolate: { image: "comidas/chocolate.png", title: "Chocolate", description: "Chocolate é representado pelo formato." },
+                feijao: { image: "comidas/feijao.png", title: "Feijão", description: "O sinal para feijão representa os grãos." },
+                leite: { image: "comidas/leite.png", title: "Leite", description: "Leite é sinalizado com gestos simples." },
+                macarrao: { image: "comidas/macarrao.png", title: "Macarrão", description: "O sinal para macarrão descreve seus fios." },
+                manteiga: { image: "comidas/manteiga.png", title: "Manteiga", description: "O sinal para manteiga simboliza seu uso." },
+                ovo: { image: "comidas/ovo.png", title: "Ovo", description: "O sinal para ovo representa seu formato." },
+                queijo: { image: "comidas/queijo.png", title: "Queijo", description: "Queijo é sinalizado com gestos curtos." },
+                sopa: { image: "comidas/sopa.png", title: "Sopa", description: "O sinal para sopa mostra o movimento de comer." },
+                sorvete: { image: "comidas/sorvete.png", title: "Sorvete", description: "Sorvete é sinalizado com gestos que lembram lamber o alimento." },
+            };
+
+            modalImage.src = items[item].image;
+            modalTitle.textContent = items[item].title;
+            modalDescription.textContent = items[item].description;
+
+            modal.style.display = "flex";
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = "none";
+        }
+    </script>
+
+</body>
+
+</html>

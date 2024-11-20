@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dicionário Interativo</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,25 +17,26 @@
 
         .menu {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
             background-color: #FF7100;
-            padding: 10px 20px;
+            padding: 10px 0;
+        }
+
+        .menu img {
+            width: 50px;
+            margin-right: 15px;
         }
 
         .menu a {
             color: #fff;
             text-decoration: none;
             font-weight: bold;
-            margin-right: 20px;
+            margin: 0 15px;
         }
 
         .menu a:hover {
             text-decoration: underline;
-        }
-
-        .menu img {
-            width: 50px;
         }
 
         .container {
@@ -88,82 +90,25 @@
             color: #333;
         }
 
-        .navigation {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .navigation div {
-            width: 15px;
-            height: 15px;
-            margin: 0 5px;
-            background-color: #FF7100;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .navigation div.active {
-            background-color: #FFDF91;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 400px;
+        .footer {
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .modal-content img {
-            width: 100%;
-            max-height: 250px;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
-
-        .modal-content p {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .close-btn {
+            padding: 10px;
             background-color: #FF7100;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .close-btn:hover {
-            background-color: #FF820E;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 
 <body>
-
     <!-- Menu -->
     <div class="menu">
-        <a href="index.html">Página Inicial</a>
-        <a href="aulas.html">Aulas</a>
-        <a href="dicionario.html">Dicionário</a>
         <img src="img/logo.png" alt="Logo">
+        <a href="index.html">Página Inicial</a>
+        <a href="aulas.php">Aulas</a>
+        <a href="dicionario.html">Dicionário</a>
     </div>
 
     <!-- Container principal -->
@@ -181,21 +126,10 @@
                 <div class="circle-label">Desculpe</div>
             </div>
         </div>
-
-        <!-- Navegação -->
-        <div class="navigation">
-            <div class="active" onclick="changePage(1)"></div>
-            <div onclick="changePage(2)"></div>
-        </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <img src="" alt="Imagem do sinal" id="modalImage">
-            <p id="modalDescription"></p>
-            <button class="close-btn" onclick="closeModal()">Fechar</button>
-        </div>
+    <div class="footer">
+        © 2024 - Projeto Libras. Todos os direitos reservados.
     </div>
 
     <script>
@@ -237,7 +171,6 @@
             });
         }
     </script>
-
 </body>
 
 </html>

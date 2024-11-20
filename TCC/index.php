@@ -168,12 +168,15 @@ session_start();
                 <a href="login.php" class="login">Login/Cadastro</a>
             <?php endif; ?>
         </div>
+        <!-- Menu começo !-->
         <div class="menu">
             <a href="index.php">Página inicial</a>
             <a href="aulas.php">Aulas</a>
             <a href="dicionario.html">Dicionário</a>
         </div>
-
+        <!-- Menu fim !-->
+         
+        <!-- carrousel começo !-->
         <div class="carousel">
             <div class="carousel-inner" id="carousel-inner">
                 <img src="img/qm_somos.jpeg" alt="Imagem 1">
@@ -186,7 +189,7 @@ session_start();
             <button onclick="prevSlide()">Anterior</button>
             <button onclick="nextSlide()">Próximo</button>
         </div>
-
+        <!-- Carousel fim !-->
         <h2>A Importância das Libras</h2>
         <p>Aprender Libras é fundamental para promover a inclusão social das pessoas surdas, facilitando a comunicação e
             permitindo sua plena participação na sociedade em diversos contextos, como na educação, no trabalho e em
