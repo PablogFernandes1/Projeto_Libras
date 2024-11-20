@@ -121,13 +121,17 @@ $classe_circulo_expressoes = verificaAulaCompletada($pdo, $usuario_id, 'expresso
         .circle {
             width: 100px;
             height: 100px;
-            background-color: #FFA733;
             border-radius: 50%;
             margin: 10px auto;
+            background-color: #FFA733;
         }
 
         .circle-completed {
             background-color: #28a745;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 10px auto;
         }
 
         .circle-wrapper {

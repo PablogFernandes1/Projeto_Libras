@@ -9,7 +9,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -56,16 +55,23 @@
         .btn:hover {
             background-color: #FF820E;
         }
+
+        #feedback {
+            margin-bottom: 20px;
+            display: none;
+        }
     </style>
 </head>
 
 <body>
-
     <div class="container">
         <h1 class="text-center mb-4">Quiz Alfabeto</h1>
-        <div id="feedback" class="alert text-center" role="alert" style="display: none;"></div>
+
+        <!-- Feedback Bootstrap -->
+        <div id="feedback" class="alert text-center" role="alert"></div>
+
         <form id="quizForm" class="p-3">
-            <!-- Questão 1 -->
+            <!-- Questões -->
             <section class="question active" id="question1">
                 <p>1. Qual é o sinal em Libras para a letra "A"?</p>
                 <div class="form-check">
@@ -74,26 +80,13 @@
                 <div class="form-check">
                     <label class="form-check-label"><input type="radio" name="question1" value="b" class="form-check-input"> Mão em forma de punho, com o polegar ao lado</label>
                 </div>
-                <div class="form-check">
-                    <label class="form-check-label"><input type="radio" name="question1" value="c" class="form-check-input"> Dedos estendidos, formando um "V"</label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label"><input type="radio" name="question1" value="d" class="form-check-input"> Mão aberta com os dedos estendidos</label>
-                </div>
                 <button type="button" class="btn btn-primary mt-3" onclick="nextQuestion(1)">Próximo</button>
             </section>
 
-            <!-- Questão 2 -->
             <section class="question" id="question2">
                 <p>2. Como é feita a letra "M" em Libras?</p>
                 <div class="form-check">
                     <label class="form-check-label"><input type="radio" name="question2" value="a" class="form-check-input"> Fechando a mão com os dedos juntos e o polegar para fora</label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label"><input type="radio" name="question2" value="b" class="form-check-input"> Colocando os três dedos do meio da mão sobre a palma</label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label"><input type="radio" name="question2" value="c" class="form-check-input"> Formando um "V" com os dedos</label>
                 </div>
                 <div class="form-check">
                     <label class="form-check-label"><input type="radio" name="question2" value="d" class="form-check-input"> Fechando a mão com três dedos dobrados para baixo</label>
@@ -101,70 +94,24 @@
                 <button type="button" class="btn btn-primary mt-3" onclick="nextQuestion(2)">Próximo</button>
             </section>
 
-            <!-- Questão 3 -->
             <section class="question" id="question3">
                 <p>3. Para representar a letra "S" em Libras, qual a posição correta da mão?</p>
                 <div class="form-check">
                     <label class="form-check-label"><input type="radio" name="question3" value="a" class="form-check-input"> Formando um punho com o dedo polegar estendido</label>
                 </div>
                 <div class="form-check">
-                    <label class="form-check-label"><input type="radio" name="question3" value="b" class="form-check-input"> Fechando a mão com os dedos esticados</label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label"><input type="radio" name="question3" value="c" class="form-check-input"> Mão em forma de punho com o dedo polegar apontando para cima</label>
-                </div>
-                <div class="form-check">
                     <label class="form-check-label"><input type="radio" name="question3" value="d" class="form-check-input"> Mão em punho, com o polegar sobre a palma</label>
                 </div>
-                <button type="button" class="btn btn-primary mt-3" onclick="nextQuestion(3)">Próximo</button>
-            </section>
-
-            <!-- Questão 4 -->
-            <section class="question" id="question4">
-                <p>4. Como é a letra "T" em Libras?</p>
-                <div class="form-check">
-                    <label class="form-check-label"><input type="radio" name="question4" value="a" class="form-check-input"> Mão aberta, com os dedos esticados</label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label"><input type="radio" name="question4" value="b" class="form-check-input"> Polegar e indicador formam um "L", e o restante dos dedos ficam curvados</label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label"><input type="radio" name="question4" value="c" class="form-check-input"> Dedos polegar e indicador em forma de "T", com o restante dos dedos fechados</label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label"><input type="radio" name="question4" value="d" class="form-check-input"> Mão em punho com o polegar estendido e o resto dos dedos dobrados</label>
-                </div>
-                <button type="button" class="btn btn-primary mt-3" onclick="nextQuestion(4)">Próximo</button>
-            </section>
-
-            <!-- Questão 5 -->
-            <section class="question" id="question5">
-                <p>5. Qual é o sinal para a letra "E" em Libras?</p>
-                <div class="form-check">
-                    <label class="form-check-label"><input type="radio" name="question5" value="a" class="form-check-input"> Mão aberta, com os dedos apontando para baixo</label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label"><input type="radio" name="question5" value="b" class="form-check-input"> Mão fechada com o dedo polegar sobre a palma</label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label"><input type="radio" name="question5" value="c" class="form-check-input"> Dedos unidos, formando um "V" com a palma para baixo</label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label"><input type="radio" name="question5" value="d" class="form-check-input"> Mão fechada com os dedos curvados para dentro</label>
-                </div>
-                <button type="button" class="btn btn-success mt-3" onclick="submitQuiz()">Enviar Respostas</button>
+                <button type="button" class="btn btn-primary mt-3" onclick="submitQuiz()">Enviar Respostas</button>
             </section>
         </form>
     </div>
 
-    <!-- Código JavaScript para o envio do quiz e avaliação das respostas -->
     <script>
         const correctAnswers = {
             question1: "b",
             question2: "d",
-            question3: "c",
-            question4: "c",
-            question5: "b"
+            question3: "d"
         };
 
         let score = 0;
@@ -177,45 +124,72 @@
                 if (selectedOption.value === correctAnswers[`question${current}`]) {
                     score++;
                     feedback.className = "alert alert-success";
-                    feedback.innerHTML = "Resposta Certa!";
+                    feedback.innerHTML = `
+                        <h4 class="alert-heading">Muito bem!</h4>
+                        <p>Você acertou a questão ${current}.</p>
+                    `;
                 } else {
                     feedback.className = "alert alert-danger";
-                    feedback.innerHTML = "Resposta Errada!";
+                    feedback.innerHTML = `
+                        <h4 class="alert-heading">Resposta Errada!</h4>
+                        <p>Infelizmente, você errou a questão ${current}. Tente na próxima!</p>
+                    `;
                 }
                 feedback.style.display = 'block';
 
                 setTimeout(() => {
                     feedback.style.display = 'none';
                     document.getElementById(`question${current}`).classList.remove('active');
-                    if (current < 5) {
+                    if (current < 3) {
                         document.getElementById(`question${current + 1}`).classList.add('active');
                     } else {
                         submitQuiz();
                     }
-                }, 1000);
+                }, 1500);
             } else {
-                alert("Por favor, selecione uma resposta.");
+                feedback.className = "alert alert-warning";
+                feedback.innerHTML = "<p>Por favor, selecione uma resposta antes de continuar.</p>";
+                feedback.style.display = 'block';
             }
         }
 
         function submitQuiz() {
-            alert(`Parabéns! Você acertou ${score} de 5 questões.`);
+            const feedback = document.getElementById('feedback');
+            feedback.className = "alert alert-success";
+            feedback.innerHTML = `
+                <h4 class="alert-heading">Parabéns!</h4>
+                <p>Você finalizou o quiz com ${score} acertos.</p>
+                <hr>
+                <p class="mb-0">Continue praticando para melhorar cada vez mais!</p>
+            `;
+            feedback.style.display = 'block';
 
+            // Enviar dados para o servidor
             $.ajax({
                 url: 'salvar_resposta.php',
                 type: 'POST',
                 data: { score: score },
-                success: function(response) {
-                    alert(response);
-                    window.location.href = 'aulas.php';
+                success: function (response) {
+                    feedback.innerHTML += `
+                        <hr>
+                        <p>${response}</p>
+                    `;
+                    setTimeout(() => {
+                        feedback.style.display = 'none';
+                        window.location.href = 'aulas.php';
+                    }, 3000);
                 },
-                error: function() {
-                    alert("Erro ao salvar o resultado.");
+                error: function () {
+                    feedback.className = "alert alert-danger";
+                    feedback.innerHTML = `
+                        <h4 class="alert-heading">Erro!</h4>
+                        <p>Houve um problema ao salvar o resultado. Tente novamente.</p>
+                    `;
+                    feedback.style.display = 'block';
                 }
             });
         }
     </script>
-
 </body>
 
 </html>
