@@ -2,7 +2,6 @@
 session_start();
 require 'config.php';
 
-// Verifica se o usuário está logado
 if (!isset($_SESSION['nome_usuario'])) {
     echo "
     <!DOCTYPE html>
@@ -48,10 +47,8 @@ if (!isset($_SESSION['nome_usuario'])) {
     exit;
 }
 
-// ID do usuário logado
 $usuario_id = $_SESSION['usuario_id'];
 
-// Função para verificar se uma aula foi completada
 function verificaAulaCompletada($pdo, $usuario_id, $aula_nome) {
     $sql = "SELECT * FROM resposta_alfabeto WHERE usuario_id = :usuario_id AND aula = :aula";
     $stmt = $pdo->prepare($sql);
@@ -61,7 +58,6 @@ function verificaAulaCompletada($pdo, $usuario_id, $aula_nome) {
     return $stmt->fetch(PDO::FETCH_ASSOC) ? 'circle-completed' : 'circle';
 }
 
-// Define a classe da cor do círculo com base na resposta para cada aula
 $classe_circulo_alfabeto = verificaAulaCompletada($pdo, $usuario_id, 'alfabeto');
 $classe_circulo_numeros = verificaAulaCompletada($pdo, $usuario_id, 'numeros');
 $classe_circulo_comidas = verificaAulaCompletada($pdo, $usuario_id, 'comidas');

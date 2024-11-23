@@ -100,51 +100,25 @@
             width: 100%;
         }
 
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+        .alphabet-container {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            align-items: center;
-            z-index: 999;
+            gap: 10px;
         }
 
-        .modal-content {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 400px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .modal-content img {
-            width: 100%;
-            max-height: 250px;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
-
-        .modal-content p {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .close-btn {
-            background-color: #FF7100;
-            color: #fff;
-            padding: 10px 20px;
+        .alphabet-button {
+            background-color: #FFA733;
+            color: white;
+            padding: 10px 15px;
             border: none;
             border-radius: 5px;
+            font-size: 16px;
             cursor: pointer;
         }
 
-        .close-btn:hover {
+        .alphabet-button:hover {
             background-color: #FF820E;
         }
     </style>
@@ -154,34 +128,28 @@
     <!-- Menu -->
     <div class="menu">
         <img src="img/logo.png" alt="Logo">
-        <a href="index.html">Página Inicial</a>
+        <a href="index.php">Página Inicial</a>
         <a href="aulas.php">Aulas</a>
         <a href="dicionario.html">Dicionário</a>
     </div>
 
     <!-- Container principal -->
     <div class="container">
-        <div class="title">DICIONÁRIO</div>
+        <div class="title" id="dictionaryTitle">DICIONÁRIO</div>
 
         <!-- Círculos interativos -->
         <div class="circle-container" id="circleContainer">
-            <div class="circle-wrapper" onclick="openModal('amigo')">
-                <div class="circle">A</div>
-                <div class="circle-label">Amigo</div>
-            </div>
-            <div class="circle-wrapper" onclick="openModal('desculpe')">
-                <div class="circle">D</div>
-                <div class="circle-label">Desculpe</div>
-            </div>
+            <!-- Conteúdo dinâmico carregado aqui -->
         </div>
-    </div>
 
-    <!-- Modal -->
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <img src="" alt="Imagem do sinal" id="modalImage">
-            <p id="modalDescription"></p>
-            <button class="close-btn" onclick="closeModal()">Fechar</button>
+        <!-- Alfabeto -->
+        <div class="alphabet-container">
+            <!-- Botões de letras -->
+            <button class="alphabet-button" onclick="loadContent('A')">A</button>
+            <button class="alphabet-button" onclick="loadContent('B')">B</button>
+            <button class="alphabet-button" onclick="loadContent('C')">C</button>
+            <!-- Continue até Z -->
+            <button class="alphabet-button" onclick="loadContent('Z')">Z</button>
         </div>
     </div>
 
@@ -190,27 +158,71 @@
     </div>
 
     <script>
-        function openModal(term) {
+        // Dados de exemplo para cada letra
+        const dictionaryData = {
+            A: [
+                { term: 'Afeto', description: 'Descrição de Afeto', image: 'dicionario/afeto.gif' },
+                { term: 'Apoiar', description: 'Descrição de Apoiar', image: 'dicionario/apoiar.gif' }
+            ],
+            B: [
+                { term: 'Brincar', description: 'Descrição de Brincar', image: 'dicionario/brincar.gif' }
+            ],
+            C: [
+                { term: 'Cantar', description: 'Descrição de Cantar', image: 'dicionario/cantar.gif' }
+            ],
+            Z: [
+                { term: 'Zelar', description: 'Descrição de Zelar', image: 'dicionario/zelar.gif' }
+            ]
+        };
+
+        // Função para carregar o conteúdo baseado na letra
+        function loadContent(letter) {
+            const circleContainer = document.getElementById('circleContainer');
+            const title = document.getElementById('dictionaryTitle');
+
+            // Atualiza o título
+            title.textContent = `DICIONÁRIO - Letra ${letter}`;
+
+            // Limpa o conteúdo atual
+            circleContainer.innerHTML = '';
+
+            // Adiciona o novo conteúdo
+            if (dictionaryData[letter]) {
+                dictionaryData[letter].forEach(item => {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'circle-wrapper';
+                    wrapper.onclick = () => openModal(item);
+
+                    const circle = document.createElement('div');
+                    circle.className = 'circle';
+                    circle.textContent = item.term.charAt(0);
+
+                    const label = document.createElement('div');
+                    label.className = 'circle-label';
+                    label.textContent = item.term;
+
+                    wrapper.appendChild(circle);
+                    wrapper.appendChild(label);
+                    circleContainer.appendChild(wrapper);
+                });
+            } else {
+                circleContainer.innerHTML = '<p>Nenhum termo encontrado para esta letra.</p>';
+            }
+        }
+
+        // Função para abrir o modal com os dados
+        function openModal(item) {
             const modal = document.getElementById('modal');
             const modalImage = document.getElementById('modalImage');
             const modalDescription = document.getElementById('modalDescription');
 
-            if (term === 'amigo') {
-                modalImage.src = "dicionario/amigo.gif";
-                modalDescription.textContent =
-                    "Coloque o braço na diagonal colado no peito com a palma da mão virada para cima e dê dois toques no peito com a lateral da mão, mantendo o braço na diagonal.";
-            } else if (term === 'desculpe') {
-                modalImage.src = "dicionario/desculpe.gif";
-                modalDescription.textContent =
-                    "Coloque a mão direita fechada em forma de punho sobre o peito e faça movimentos circulares.";
-            }
-
-            modal.style.display = "flex";
+            modalImage.src = item.image;
+            modalDescription.textContent = item.description;
+            modal.style.display = 'flex';
         }
 
         function closeModal() {
-            const modal = document.getElementById('modal');
-            modal.style.display = "none";
+            document.getElementById('modal').style.display = 'none';
         }
     </script>
 </body>
