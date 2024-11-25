@@ -144,37 +144,305 @@
 
         <!-- Alfabeto -->
         <div class="alphabet-container">
-            <!-- Botões de letras -->
             <button class="alphabet-button" onclick="loadContent('A')">A</button>
             <button class="alphabet-button" onclick="loadContent('B')">B</button>
             <button class="alphabet-button" onclick="loadContent('C')">C</button>
-            <!-- Continue até Z -->
+            <button class="alphabet-button" onclick="loadContent('D')">D</button>
+            <button class="alphabet-button" onclick="loadContent('E')">E</button>
+            <button class="alphabet-button" onclick="loadContent('F')">F</button>
+            <button class="alphabet-button" onclick="loadContent('G')">G</button>
+            <button class="alphabet-button" onclick="loadContent('H')">H</button>
+            <button class="alphabet-button" onclick="loadContent('I')">I</button>
+            <button class="alphabet-button" onclick="loadContent('J')">J</button>
+            <button class="alphabet-button" onclick="loadContent('K')">K</button>
+            <button class="alphabet-button" onclick="loadContent('L')">L</button>
+            <button class="alphabet-button" onclick="loadContent('M')">M</button>
+            <button class="alphabet-button" onclick="loadContent('N')">N</button>
+            <button class="alphabet-button" onclick="loadContent('O')">O</button>
+            <button class="alphabet-button" onclick="loadContent('p')">p</button>
+            <button class="alphabet-button" onclick="loadContent('Q')">Q</button>
+            <button class="alphabet-button" onclick="loadContent('R')">R</button>
+            <button class="alphabet-button" onclick="loadContent('S')">S</button>
+            <button class="alphabet-button" onclick="loadContent('T')">T</button>
+            <button class="alphabet-button" onclick="loadContent('U')">U</button>
+            <button class="alphabet-button" onclick="loadContent('V')">V</button>
+            <button class="alphabet-button" onclick="loadContent('W')">W</button>
+            <button class="alphabet-button" onclick="loadContent('X')">X</button>
+            <button class="alphabet-button" onclick="loadContent('Y')">Y</button>
             <button class="alphabet-button" onclick="loadContent('Z')">Z</button>
         </div>
     </div>
 
+    <!-- Modal (Adicione esta parte aqui!) -->
+    <div class="modal" id="modal"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); justify-content: center; align-items: center; z-index: 999;">
+        <div class="modal-content"
+            style="background-color: #fff; padding: 20px; border-radius: 10px; max-width: 400px; text-align: center; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+            <img src="" alt="Imagem do sinal" id="modalImage"
+                style="width: 100%; max-height: 250px; object-fit: cover; margin-bottom: 10px;">
+            <p id="modalDescription" style="font-size: 16px; color: #333; margin-bottom: 20px;"></p>
+            <button class="close-btn" onclick="closeModal()"
+                style="background-color: #FF7100; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <div class="footer">
         © 2024 - Projeto Libras. Todos os direitos reservados.
     </div>
 
     <script>
-        // Dados de exemplo para cada letra
+        // Dados do dicionário para cada letra
         const dictionaryData = {
             A: [
-                { term: 'Afeto', description: 'Descrição de Afeto', image: 'dicionario/afeto.gif' },
-                { term: 'Apoiar', description: 'Descrição de Apoiar', image: 'dicionario/apoiar.gif' }
+                { term: 'Afeto', description: 'Forme a letra A com as duas mãos, posicione-as próximas ao peito e faça um movimento suave e circular para frente, demonstrando carinho com a expressão facial.', image: 'dicionario/afeto.gif' },
+                { term: 'Apoiar', description: 'Coloque uma mão em forma de base aberta e a outra mão fechada em punho apoiada sobre a primeira, demonstrando o gesto de dar suporte ou apoio.', image: 'dicionario/apoiar.gif' },
+                { term: 'Aprovar', description: 'Erga o polegar da mão dominante para cima e faça um movimento curto e firme para frente, simbolizando aprovação ou concordância.', image: 'dicionario/aprovar.gif' }
             ],
             B: [
-                { term: 'Brincar', description: 'Descrição de Brincar', image: 'dicionario/brincar.gif' }
+                { term: 'Bater', description: 'Feche uma das mãos em forma de punho e dê um leve toque com ela na palma aberta da outra mão, simulando o gesto de bater.', image: 'dicionario/bater.gif' },
+                { term: 'Beijo', description: 'Com os lábios unidos, leve a mão em forma de concha até a boca e depois afaste-a levemente, como se estivesse enviando um beijo.', image: 'dicionario/beijo.gif' },
+                { term: 'Brincar', description: 'Com as mãos abertas e os dedos afastados, faça movimentos alternados para cima e para baixo, simbolizando diversão ou brincadeira.', image: 'dicionario/brincar.gif' }
             ],
             C: [
-                { term: 'Cantar', description: 'Descrição de Cantar', image: 'dicionario/cantar.gif' }
+                { term: 'Cabeça', description: 'Com a mão dominante aberta, toque levemente a lateral da cabeça, indicando o gesto de cabeça.', image: 'dicionario/cabeca.gif' },
+                { term: 'Cheio', description: 'Com a mão dominante em forma de concha, faça um movimento suave de baixo para cima, simbolizando o enchimento.', image: 'dicionario/cheio.gif' },
+                { term: 'Com licença', description: 'Com a mão dominante aberta e os dedos juntos, faça um movimento leve e circular em direção à outra pessoa, demonstrando educação ao pedir licença.', image: 'dicionario/com_licenca.gif' }
+            ],
+            D: [
+                { term: 'Deitar', description: 'Com ambas as mãos abertas, faça o gesto de colocar algo deitado suavemente, como se estivesse descansando.', image: 'dicionario/deitar.gif' },
+                { term: 'Desabafar', description: 'Com a mão dominante em formato de concha, comece perto do peito e mova-a para frente, simbolizando alívio ao compartilhar algo.', image: 'dicionario/desabafar.gif' },
+                { term: 'Divertido', description: 'Com as mãos próximas ao rosto, faça movimentos leves de vaivém para expressar felicidade e diversão.', image: 'dicionario/divertido.gif' }
+            ],
+            E: [
+                {
+                    term: 'Economizar',
+                    description: 'Com a mão dominante em forma de pinça, faça um movimento curto e repetitivo como se estivesse guardando algo em um recipiente pequeno.',
+                    image: 'dicionario/economizar.gif'
+                },
+                {
+                    term: 'Emprestar',
+                    description: 'Com ambas as mãos fechadas em forma de "C", aproxime-as levemente como se estivesse oferecendo algo temporariamente.',
+                    image: 'dicionario/emprestar.gif'
+                },
+                {
+                    term: 'Esperto',
+                    description: 'Com a mão dominante em forma de L, toque a testa e faça um movimento curto para cima, demonstrando inteligência ou sagacidade.',
+                    image: 'dicionario/esperto.gif'
+                }
+            ],
+
+            F: [
+                {
+                    term: 'Farmácia',
+                    description: 'Com uma mão em forma de pinça, faça movimentos circulares na palma da outra mão, simbolizando o preparo de medicamentos.',
+                    image: 'dicionario/farmacia.gif'
+                },
+                {
+                    term: 'Festa',
+                    description: 'Com ambas as mãos abertas, faça movimentos alternados de rotação para cima e para baixo, representando o movimento de dança.',
+                    image: 'dicionario/festa.gif'
+                },
+                {
+                    term: 'Fome',
+                    description: 'Com a mão aberta, posicione-a sobre o estômago e deslize-a para baixo, indicando a sensação de fome.',
+                    image: 'dicionario/fome.gif'
+                }
+            ],
+
+            G: [
+                {
+                    term: 'Gabar',
+                    description: 'Com a mão dominante em forma de um "C" aberto, mova-a de forma circular próxima à cabeça, representando a ideia de exaltação ou orgulho.',
+                    image: 'dicionario/gabar.gif'
+                },
+                {
+                    term: 'Gentil',
+                    description: 'Com a mão aberta, faça um gesto suave de carícia ou rotação em frente ao peito, expressando delicadeza e respeito.',
+                    image: 'dicionario/gentil.gif'
+                },
+                {
+                    term: 'Gostar',
+                    description: 'Com a mão dominante, leve os dedos ao centro do peito e deslize-a levemente para frente, expressando afeição ou preferência.',
+                    image: 'dicionario/gostar.gif'
+                }
+            ],
+
+            H: [
+                {
+                    term: 'Hoje',
+                    description: 'Com as duas mãos abertas e as palmas voltadas para baixo, faça movimentos suaves para frente e para trás na altura do peito, simbolizando o momento presente.',
+                    image: 'dicionario/hoje.gif'
+                },
+                {
+                    term: 'Homem',
+                    description: 'Com a mão dominante em forma de "C", mova-a do queixo para o peito, representando o sinal para "homem".',
+                    image: 'dicionario/homem.gif'
+                },
+                {
+                    term: 'Humilde',
+                    description: 'Com a mão aberta, faça um gesto suave para baixo na frente do corpo, representando modéstia e simplicidade.',
+                    image: 'dicionario/humilde.gif'
+                }
+            ],
+            I: [
+                {
+                    term: 'Idoso',
+                    description: 'Faça um movimento com a mão em formato de "C" em frente ao rosto, seguido de um movimento descendente, representando a idade avançada.',
+                    image: 'dicionario/idoso.gif'
+                },
+                {
+                    term: 'Ignorar',
+                    description: 'Com a mão dominante aberta, faça um movimento rápido de varredura para o lado do rosto, simbolizando a ação de ignorar.',
+                    image: 'dicionario/ignorar.gif'
+                },
+                {
+                    term: 'Interesse',
+                    description: 'Com as duas mãos fechadas em punho na altura do peito, faça movimentos alternados para frente, demonstrando curiosidade ou envolvimento.',
+                    image: 'dicionario/interesse.gif'
+                }
+            ],
+
+            J: [
+                {
+                    term: 'Jamais',
+                    description: 'Com a mão aberta, faça um movimento horizontal em frente à boca, demonstrando a ação de negar ou impossibilidade.',
+                    image: 'dicionario/jamais.gif'
+                },
+                {
+                    term: 'Jornal',
+                    description: 'Posicione as mãos em forma de "L", como se estivesse segurando e abrindo um jornal, e faça o movimento simulando a leitura.',
+                    image: 'dicionario/jornal.gif'
+                },
+                {
+                    term: 'Junto',
+                    description: 'Com as mãos abertas e os dedos juntos, aproxime-as uma da outra, simbolizando união ou proximidade.',
+                    image: 'dicionario/junto.gif'
+                }
+            ],
+
+            L: [
+                {
+                    term: 'Lavar',
+                    description: 'Com as mãos abertas e os dedos entrelaçados, faça movimentos de fricção simulando o ato de lavar.',
+                    image: 'dicionario/lavar.gif'
+                },
+                {
+                    term: 'Lento',
+                    description: 'Com a mão aberta e voltada para baixo, mova-a lentamente para frente, simbolizando algo que ocorre devagar.',
+                    image: 'dicionario/lento.gif'
+                },
+                {
+                    term: 'Ligar',
+                    description: 'Com uma das mãos em forma de "telefone" (polegar e dedo mínimo estendidos), leve-a próximo ao ouvido e faça um gesto indicando uma ligação.',
+                    image: 'dicionario/ligar.gif'
+                }
+            ],
+
+            M: [
+                {
+                    term: 'Madrugada',
+                    description: 'Com uma das mãos aberta e a outra fechada em forma de punho, faça um movimento para baixo simulando o pôr da noite.',
+                    image: 'dicionario/madrugada.gif'
+                },
+                {
+                    term: 'Mimado',
+                    description: 'Com as mãos abertas e alternadas, faça pequenos movimentos circulares no peito, simbolizando alguém que recebe muitos cuidados.',
+                    image: 'dicionario/mimado.gif'
+                },
+                {
+                    term: 'Morrer',
+                    description: 'Com as palmas voltadas para cima, vire-as para baixo em um movimento suave, simbolizando o ato de cair ou finalizar.',
+                    image: 'dicionario/morrer.gif'
+                }
+            ],
+            N: [
+                {
+                    term: 'Negativo',
+                    description: 'Com a mão em posição aberta e a palma para baixo, faça um leve movimento lateral de negação, simbolizando "não" ou algo negativo.',
+                    image: 'dicionario/negativo.gif'
+                },
+                {
+                    term: 'Namorar',
+                    description: 'Com ambas as mãos fechadas em forma de punho, posicione-as próximas ao peito e faça movimentos circulares simultâneos, simbolizando afeto e união.',
+                    image: 'dicionario/namorar.gif'
+                },
+                {
+                    term: 'Noite',
+                    description: 'Com uma mão em forma de concha sobre a outra mão aberta, faça um movimento suave de cima para baixo, simulando o céu escurecendo.',
+                    image: 'dicionario/noite.gif'
+                }
+            ],
+            O: [
+                {
+                    term: 'Olá',
+                    description: 'Com a mão aberta e a palma virada para frente, faça um movimento leve de cima para baixo, simbolizando um cumprimento amigável.',
+                    image: 'dicionario/ola.gif'
+                },
+                {
+                    term: 'Obedecer',
+                    description: 'Com as mãos juntas em forma de concha em frente ao corpo, faça um leve movimento para frente e para baixo, simbolizando concordância e respeito.',
+                    image: 'dicionario/obedecer.gif'
+                },
+                {
+                    term: 'Oferecer',
+                    description: 'Com as mãos abertas e voltadas para cima, mova-as suavemente para frente, como se estivesse entregando algo a alguém.',
+                    image: 'dicionario/oferecer.gif'
+                }
+            ],
+
+
+            P: [
+                { term: 'Paciência', description: 'Com a mão aberta, faça movimentos lentos e circulares sobre o peito, demonstrando calma e serenidade.', image: 'dicionario/paciencia.gif' },
+                { term: 'Pedir', description: 'Com as mãos unidas em forma de concha à frente do corpo, faça um movimento leve para frente, simbolizando o ato de solicitar algo.', image: 'dicionario/pedir.gif' },
+                { term: 'Piada', description: 'Com a mão em forma de punho e o dedo indicador estendido, faça um movimento circular próximo ao lado do rosto, indicando diversão.', image: 'dicionario/piada.gif' }
+            ],
+            Q: [
+                { term: 'Quadril', description: 'Coloque as mãos nos quadris e faça movimentos leves para os lados, indicando a área do quadril.', image: 'dicionario/quadril.gif' },
+                { term: 'Queimadura', description: 'Com a mão aberta, toque levemente a outra mão ou o braço enquanto faz uma expressão de dor.', image: 'dicionario/queimadura.gif' },
+                { term: 'Quintal', description: 'Faça um gesto circular com a mão aberta, simbolizando o espaço externo de um quintal.', image: 'dicionario/quintal.gif' }
+            ],
+            R: [
+                { term: 'Rancor', description: 'Coloque a mão fechada sobre o peito e mova-a para baixo, indicando um sentimento interno pesado.', image: 'dicionario/rancor.gif' },
+                { term: 'Reagir', description: 'Com ambas as mãos abertas à frente, faça um movimento rápido de afastamento, simbolizando uma reação.', image: 'dicionario/reagir.gif' },
+                { term: 'Rir', description: 'Com ambas as mãos próximas ao rosto, faça movimentos curtos e repetitivos para cima, indicando riso.', image: 'dicionario/rir.gif' }
+            ],
+            S: [
+                { term: 'Saber', description: 'Toque a testa com o dedo indicador e mova-o para frente, simbolizando a aquisição de conhecimento.', image: 'dicionario/saber.gif' },
+                { term: 'Saudade', description: 'Com a mão em punho próximo ao peito, faça um movimento circular leve, demonstrando nostalgia.', image: 'dicionario/saudade.gif' },
+                { term: 'Segurar', description: 'Com ambas as mãos fechadas, simule segurar algo à frente do corpo.', image: 'dicionario/segurar.gif' }
+            ],
+            T: [
+                { term: 'Talento', description: 'Com uma das mãos aberta, mova-a em direção à testa e depois para cima, simbolizando capacidade.', image: 'dicionario/talento.gif' },
+                { term: 'Tímido', description: 'Com uma das mãos sobre o rosto, faça um movimento leve para o lado, mostrando timidez.', image: 'dicionario/timido.gif' },
+                { term: 'Torcer', description: 'Feche as mãos e faça movimentos alternados para cima e para baixo, indicando torcida.', image: 'dicionario/torcer.gif' }
+            ],
+            U: [
+                { term: 'Umidade', description: 'Com ambas as mãos abertas, simule gotas de água caindo, representando umidade.', image: 'dicionario/umidade.gif' },
+                { term: 'Unha', description: 'Mostre a ponta dos dedos com a outra mão, indicando a área das unhas.', image: 'dicionario/unha.gif' },
+                { term: 'União', description: 'Com as mãos entrelaçadas, mova-as suavemente para frente, simbolizando união.', image: 'dicionario/uniao.gif' }
+            ],
+            V: [
+                { term: 'Vacinar', description: 'Com uma das mãos fechada em forma de punho, toque levemente o braço oposto, simulando uma aplicação de vacina.', image: 'dicionario/vacinar.gif' },
+                { term: 'Vaidoso', description: 'Com ambas as mãos abertas, mova-as próximas ao rosto em movimentos alternados, simbolizando cuidado pessoal.', image: 'dicionario/vaidoso.gif' },
+                { term: 'Valorizar', description: 'Toque o peito com a mão aberta e mova-a para frente, indicando apreciação.', image: 'dicionario/valorizar.gif' }
+            ],
+            X: [
+                { term: 'Xampu', description: 'Com ambas as mãos abertas, faça movimentos circulares sobre a cabeça, simulando o uso de xampu.', image: 'dicionario/xampu.gif' },
+                { term: 'Xarope', description: 'Com a mão em forma de concha, leve-a até a boca como se estivesse tomando algo.', image: 'dicionario/xarope.gif' },
+                { term: 'Xícara', description: 'Com uma das mãos em forma de concha e a outra fazendo o movimento de segurar a alça, simule beber de uma xícara.', image: 'dicionario/xicara.gif' }
             ],
             Z: [
-                { term: 'Zelar', description: 'Descrição de Zelar', image: 'dicionario/zelar.gif' }
+                { term: 'Zangado', description: 'Com a mão em punho próximo ao rosto, faça movimentos rápidos para frente, mostrando expressão de raiva.', image: 'dicionario/zangado.gif' },
+                { term: 'Zerar', description: 'Com ambas as mãos abertas, junte-as formando um círculo, simbolizando o número zero.', image: 'dicionario/zerar.gif' },
+                { term: 'Zombar', description: 'Com a mão aberta próximo ao rosto, faça movimentos rápidos para os lados, simbolizando brincadeira de mau gosto.', image: 'dicionario/zombar.gif' }
             ]
-        };
 
+
+
+
+
+        };
         // Função para carregar o conteúdo baseado na letra
         function loadContent(letter) {
             const circleContainer = document.getElementById('circleContainer');
@@ -216,15 +484,21 @@
             const modalImage = document.getElementById('modalImage');
             const modalDescription = document.getElementById('modalDescription');
 
+            // Configura os dados do modal
             modalImage.src = item.image;
             modalDescription.textContent = item.description;
+
+            // Exibe o modal
             modal.style.display = 'flex';
         }
 
         function closeModal() {
-            document.getElementById('modal').style.display = 'none';
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
         }
     </script>
+
+
 </body>
 
 </html>
